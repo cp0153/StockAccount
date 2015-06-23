@@ -18,12 +18,18 @@
     <ClInclude Include="StockMarket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Stocks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="StockMarket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StockMarketTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Stocks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
