@@ -79,11 +79,13 @@
     <ClInclude Include="MoneyMarket.h" />
     <ClInclude Include="StockMarket.h" />
     <ClInclude Include="Stocks.h" />
+    <ClInclude Include="Transactions.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="StockMarket.cpp" />
     <ClCompile Include="StockMarketTest.cpp" />
     <ClCompile Include="Stocks.cpp" />
+    <ClCompile Include="Transactions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="dow_jones.txt" />
