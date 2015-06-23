@@ -23,5 +23,13 @@
     <ClCompile Include="StockMarket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StockMarketTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="dow_jones.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
