@@ -21,6 +21,9 @@
     <ClInclude Include="Stocks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MoneyMarket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="StockMarket.cpp">

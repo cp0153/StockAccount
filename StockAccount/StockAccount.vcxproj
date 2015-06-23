@@ -76,6 +76,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="MoneyMarket.h" />
     <ClInclude Include="StockMarket.h" />
     <ClInclude Include="Stocks.h" />
   </ItemGroup>
