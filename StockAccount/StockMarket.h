@@ -10,6 +10,7 @@ public:
 	~StockMarket();
 	void displayStockMarket();
 	void updateStockMarket();
+	Stocks get_stock(int selection);
 	
 
 private:

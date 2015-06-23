@@ -56,3 +56,8 @@ void StockMarket::updateStockMarket()
 		Market[i].updateStockPrice();
 	}
 }
+
+Stocks StockMarket::get_stock(int selection)
+{
+	return Market[selection];
+}

@@ -6,9 +6,9 @@
 
 Stocks::Stocks(){}
 
+//Constructor takes  c-string and randomly generates a starting price for the stock
 Stocks::Stocks(char symbol[5])
 {
-	int i;
 	const double LO = 25;
 	const double HI = 300;
 
@@ -16,7 +16,6 @@ Stocks::Stocks(char symbol[5])
 	m_currentPrice = m_prevPrice;
 	memcpy(m_symbol, symbol, 4);
 	m_symbol[4] = '\0';
-
 }
 
 Stocks::~Stocks(){}
@@ -44,10 +43,23 @@ void Stocks::updateStockPrice()
 
 void Stocks::displayStockInfo()
 {
-	printf("%s\t", m_symbol);
-	printf("%.2f", m_prevPrice);
+	printf("%s\t", get_symbol());
+	printf("%.2f", get_prevPrice());
 	printf("\t\t");
-	printf("%.2f", m_currentPrice);
+	printf("%.2f", get_currentPrice());
 	printf("\t\t");
-	printf("%.2f\n", (m_currentPrice - m_prevPrice) / m_prevPrice * 100);
+	printf("%.2f\n", (get_currentPrice() - get_prevPrice()) / get_prevPrice() * 100);
+}
+
+char* Stocks::get_symbol()
+{
+	return m_symbol;
+}
+double Stocks::get_prevPrice()
+{
+	return m_prevPrice;
+}
+double Stocks::get_currentPrice()
+{
+	return m_currentPrice;
 }
