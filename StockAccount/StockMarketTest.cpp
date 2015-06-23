@@ -3,23 +3,16 @@
 
 int main()
 {
-	FILE* infile;
-	stock_market dow;
-	int i = 0;
-
-	infile = fopen("dow_jones.txt", "r");
-	if (infile == NULL)
-	{
-		printf("failed to open dow_jones.txt\n");
-		exit(1);
-	}
-	srand(static_cast <unsigned> (time(0)));
-	init_stock_list(infile, &dow);
-
-	display_stock_market(dow);
-	update_stock_market(&dow);
+	StockMarket test;
+	test.displayStockMarket();
 	std::cout << "\n";
-	display_stock_market(dow);
-
+	test.updateStockMarket();
+	test.displayStockMarket();
+	std::cout << "\n";
+	test.updateStockMarket();
+	test.displayStockMarket();
+	std::cout << "\n";
+	test.updateStockMarket();
+	test.displayStockMarket();
 	return 0;
 }

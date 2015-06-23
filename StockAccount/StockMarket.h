@@ -5,13 +5,17 @@
 #include <stdio.h>
 #include <ctime>
 
-typedef struct stock_list{
-	char stockName[30][5];
-	double prevPrice[30], currentPrice[30];
-}stock_market;
+class StockMarket
+{
+public:
+	StockMarket();
+	~StockMarket();
+	void displayStockMarket();
+	void updateStockMarket();
 
-void init_stock_list(FILE* infile, stock_market* dow);
-void display_stock_market(stock_market dow);
-void update_stock_market(stock_market *dow);
-
+private:
+	char m_stockName[30][5];
+	double m_prevPrice[30], m_currentPrice[30];
+	FILE* m_infile;
+};
 #endif
