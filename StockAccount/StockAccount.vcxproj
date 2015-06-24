@@ -76,14 +76,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BrokerageAccount.h" />
     <ClInclude Include="MoneyMarket.h" />
-    <ClInclude Include="MoneyMarketTransactions.h" />
+    <ClInclude Include="Portfolio.h" />
     <ClInclude Include="StockMarket.h" />
     <ClInclude Include="Stocks.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MoneyMarket.cpp" />
-    <ClCompile Include="MoneyMarketTransactions.cpp" />
+    <ClCompile Include="BrokerageAccount.cpp" />
+    <ClCompile Include="Portfolio.cpp" />
     <ClCompile Include="StockMarket.cpp" />
     <ClCompile Include="StockMarketTest.cpp" />
     <ClCompile Include="Stocks.cpp" />

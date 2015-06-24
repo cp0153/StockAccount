@@ -24,7 +24,10 @@
     <ClInclude Include="MoneyMarket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MoneyMarketTransactions.h">
+    <ClInclude Include="BrokerageAccount.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Portfolio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,10 +41,10 @@
     <ClCompile Include="Stocks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MoneyMarket.cpp">
+    <ClCompile Include="BrokerageAccount.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MoneyMarketTransactions.cpp">
+    <ClCompile Include="Portfolio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
