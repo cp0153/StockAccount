@@ -3,17 +3,17 @@
 #include "MoneyMarket.h"
 #include "Portfolio.h"
 
-class BrokerageAccount
+class brokerageAccount
 {
 public:
-	BrokerageAccount();
-	~BrokerageAccount();
+	brokerageAccount();
+	~brokerageAccount();
 	void mainMenu();
-	void MoneyMarketMenu();
-	void StockAccountMenu();
+	void moneyMarketMenu();
+	void stockAccountMenu();
 private:
-	MoneyMarket m_money_market;
-	Portfolio m_Portfolio;
+	//MoneyMarket m_money_market;
+	//Portfolio m_Portfolio;
 
 };
 
