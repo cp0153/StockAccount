@@ -30,6 +30,12 @@
     <ClInclude Include="Portfolio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MoneyMarketTransactions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StockTransactions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="StockMarket.cpp">
@@ -45,6 +51,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Portfolio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MoneyMarket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MoneyMarketTransactions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StockTransactions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
