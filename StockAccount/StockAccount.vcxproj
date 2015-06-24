@@ -79,16 +79,20 @@
     <ClInclude Include="BrokerageAccount.h" />
     <ClInclude Include="MoneyMarket.h" />
     <ClInclude Include="MoneyMarketTransactions.h" />
+    <ClInclude Include="Portfolio.h" />
     <ClInclude Include="StockMarket.h" />
     <ClInclude Include="Stocks.h" />
+    <ClInclude Include="StockTransactions.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BrokerageAccount.cpp" />
     <ClCompile Include="MoneyMarket.cpp" />
     <ClCompile Include="MoneyMarketTransactions.cpp" />
     <ClCompile Include="Portfolio.cpp" />
     <ClCompile Include="StockMarket.cpp" />
     <ClCompile Include="StockMarketTest.cpp" />
     <ClCompile Include="Stocks.cpp" />
+    <ClCompile Include="StockTransactions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="dow_jones.txt" />
