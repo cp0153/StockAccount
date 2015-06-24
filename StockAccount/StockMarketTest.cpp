@@ -1,6 +1,7 @@
 #include <iostream>
 #include <map>
 #include "StockMarket.h"
+#include "MoneyMarketTransactions.h"
 
 int main()
 {
@@ -25,5 +26,14 @@ int main()
 		std::cout << it->first << ": ";
 		std::cout << it->second << "\n";
 	}
+
+	MMTransactions acc1;
+	acc1.get_balance();
+	acc1.deposit(500);
+	acc1.withdraw(400);
+	acc1.deposit(409);
+	acc1.withdraw(10);
+	acc1.output();
+	
 	return 0;
 }

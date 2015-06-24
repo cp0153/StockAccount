@@ -1,106 +1,59 @@
 #include "MoneyMarketTransactions.h"
 
-map<int, double>::iterator pos;
-map<int, double>::iterator pos2;
-
-MMTransactions::MMTransactions()
+MMTransactions::MMTransactions() : MoneyMarket()
 {
-	balance = 0;
-	n_withdraws = 0;
+	m_balance = 0;
 }
 MMTransactions::~MMTransactions()
 {}
 
-void MMTransactions::transfer(MMTransactions &another_account, double amount)
+int MMTransactions::withdraw(double amount)
 {
-	int i = 0;
-	cout << "Attempting to transfer $" << amount << "..." << endl;
-	withdraw(amount);
-	if (amount > 0 && amount <= balance)
+	cout << "\nAttempting to withdraw $" << amount << "..." << endl;
+	if (amount > 0 && amount <= m_balance)
 	{
-		another_account.deposit(amount);
-		cout << "\tTRANSFER COMPLETE" << endl;
-		transaction.insert(pair<int, double>(i++, amount));
-	}
-	else if (amount < 0)
-	{
-		cout << "Error, withdrawal amount must be greater than 0.\n\tCANNOT TRANSFER" << endl;
-	}
-	else if (amount > balance)
-	{
-		cout << "Error, withdrawal amount must be less than or equal to the balance.\n\tCANNOT TRANSFER" << endl;
-	}
-}
-
-double MMTransactions::withdraw(double amount)
-{
-	int i = 0;
-	cout << "Attempting to withdraw $" << amount << "..." << endl;
-	if (amount > 0 && amount <= balance)
-	{
-		if (n_withdraws > 1)
-		{
-			if (amount <= balance - 1.50)
-			{
-				balance -= (amount + 1.50);
-				n_withdraws++;
-			}
-		}
-		else
-		{
-			balance -= amount;
-			n_withdraws++;
-		}
-		transaction.insert(pair<int, double>(i++, amount));
+		cout << "\tWITHDRAW COMPLETE" << endl;
+		transaction.insert(pair<int, double>(++m_key, amount));
 	}
 	else if (amount < 0)
 	{
 		cout << "Error, withdrawal amount must be greater than 0.\n\tCANNOT WITHDRAW." << endl;
 		return 1;
 	}
-	else if (amount > balance)
+	else if (amount > m_balance)
 	{
 		cout << "Error, withdrawal amount must be less than or equal to the balance.\n\tCANNOT WITHDRAW: INSUFFICIENT FUNDS" << endl;
 		return 1;
 	}
-
-	return balance;
+	return 0;
 }
 
-int MMTransactions::getWithdraws(int n_withdraws)
+int MMTransactions::deposit(double amount)
 {
-	return n_withdraws;
-}
-void MMTransactions::deposit(double amount)
-{
-	int i = 0;
-	cout << "Attempting to deposit $" << amount << "..." << endl;
+	cout << "\nAttempting to deposit $" << amount << "..." << endl;
 	if (amount > 0)
 	{
-		balance += amount;
+		m_balance += amount;
 		cout << "\tDEPOSIT COMPLETE" << endl;
-		transaction.insert(pair<int, double>(i++, amount));
+		transaction.insert(pair<int, double>(++m_key, amount));
+		return 0;
 	}
 	else
 	{
 		cout << "Error, deposit amount must be non-negative.\n\tCANNOT DEPOSIT" << endl;
+		return 1;
 	}
 }
 void MMTransactions::output()
 {
-	cout << "You have " << n_withdraws << " withdraws" << endl;
-	cout << "You have $" << getBalance() << " in your account" << endl;
+	cout << "\nYou have $" << get_balance() << " in your account" << endl;
 	map<int, double>::iterator pos;
 	for (pos = transaction.begin(); pos != transaction.end(); ++pos)
 	{
-		cout << "Key: " << pos->first << " value: ";
-		/*map <int, double>::iterator it;
-		for (it = pos->second.begin(); it != pos->second.end(); ++it)
-		{*/
-			//cout << *pos << " ";
+		cout << "Key: " << pos->first << " value: $" << pos->second << endl;
 	}
 }
-double MMTransactions::getBalance()
+double MMTransactions::get_balance()
 {
-	return balance;
+	return m_balance;
 }

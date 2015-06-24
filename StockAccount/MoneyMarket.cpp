@@ -7,15 +7,12 @@ using namespace std;
 MoneyMarket::MoneyMarket()
 {
 	cout << "\nPlease Enter Your Name: ";
-	cin >> name;
-	balance = 0;
+	cin >> m_name;
+	m_balance = 0;
+	cout << "\nHello " << m_name << ", You have " << m_balance << " in your account" << endl;
 }
 MoneyMarket::~MoneyMarket()
 {}
 
-void MoneyMarket::output()
-{
-	cout << "\nHello " << name << ", You have " << balance << " in your account" << endl;
-}
 
 

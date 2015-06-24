@@ -4,23 +4,22 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include "MoneyMarket.h"
 
 using namespace std;
 
-class MMTransactions
+class MMTransactions : public MoneyMarket
 {
 public:
 	MMTransactions();
-	~MMTransactions();
-	void transfer(MMTransactions &another_account, double amount);
-	double withdraw(double amount);
-	int getWithdraws(int n_withdraws);
-	void deposit(double amount);
+	virtual ~MMTransactions();
+	int withdraw(double amount);
+	int deposit(double amount);
 	void output();
-	double getBalance();
-private:
-	int n_withdraws;
-	double balance;
+	double get_balance();
+
+protected:
 	map < int, double > transaction;
+	int m_key = 1;
 };
 #endif
