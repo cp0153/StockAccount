@@ -7,7 +7,7 @@ MMTransactions::MMTransactions() : MoneyMarket()
 MMTransactions::~MMTransactions()
 {}
 
-int MMTransactions::withdraw(double amount)
+int MMTransactions::withdraw()
 {
 	cout << "\nAttempting to withdraw $" << amount << "..." << endl;
 	if (amount > 0 && amount <= m_balance)
@@ -15,7 +15,7 @@ int MMTransactions::withdraw(double amount)
 		cout << "\tWITHDRAW COMPLETE" << endl;
 		transaction.insert(pair<int, double>(++m_key, amount));
 	}
-	else if (amount < 0)
+	/*else if (amount < 0)
 	{
 		cout << "Error, withdrawal amount must be greater than 0.\n\tCANNOT WITHDRAW." << endl;
 		return 1;
@@ -24,11 +24,11 @@ int MMTransactions::withdraw(double amount)
 	{
 		cout << "Error, withdrawal amount must be less than or equal to the balance.\n\tCANNOT WITHDRAW: INSUFFICIENT FUNDS" << endl;
 		return 1;
-	}
+	}*/
 	return 0;
 }
 
-int MMTransactions::deposit(double amount)
+int MMTransactions::deposit()
 {
 	cout << "\nAttempting to deposit $" << amount << "..." << endl;
 	if (amount > 0)
@@ -38,11 +38,11 @@ int MMTransactions::deposit(double amount)
 		transaction.insert(pair<int, double>(++m_key, amount));
 		return 0;
 	}
-	else
+	/*else
 	{
 		cout << "Error, deposit amount must be non-negative.\n\tCANNOT DEPOSIT" << endl;
 		return 1;
-	}
+	}*/
 }
 void MMTransactions::output()
 {

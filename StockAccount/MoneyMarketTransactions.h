@@ -13,13 +13,14 @@ class MMTransactions : public MoneyMarket
 public:
 	MMTransactions();
 	virtual ~MMTransactions();
-	int withdraw(double amount);
-	int deposit(double amount);
+	int withdraw();
+	int deposit();
 	void output();
 	double get_balance();
 
 protected:
 	map < int, double > transaction;
+	double amount;
 	int m_key = 1;
 };
 #endif
