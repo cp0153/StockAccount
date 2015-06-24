@@ -8,6 +8,7 @@ class Portfolio
 public:
 	Portfolio();
 	~Portfolio();
+	int get_numShares();
 private:
 	std::map < int, StockTransactions > m_stockLedger;
 	double m_gainLoss;
