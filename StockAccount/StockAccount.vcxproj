@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BrokerageAccount.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="MoneyMarket.cpp" />
     <ClCompile Include="MoneyMarketTransactions.cpp" />
     <ClCompile Include="Portfolio.cpp" />

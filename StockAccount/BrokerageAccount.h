@@ -10,7 +10,7 @@ public:
 	~brokerageAccount();
 	void mainMenu();
 	void moneyMarketMenu();
-	void stockAccountMenu();
+	void portfolioMenu();
 private:
 	//MoneyMarket m_money_market;
 	//Portfolio m_Portfolio;
