@@ -7,6 +7,8 @@
 
 int main()
 {
+	brokerageAccount test;
+	test.mainMenu();
 
 	return 0;
 }
