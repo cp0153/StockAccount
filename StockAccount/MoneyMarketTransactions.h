@@ -13,8 +13,8 @@ class MMTransactions : public MoneyMarket
 public:
 	MMTransactions();
 	virtual ~MMTransactions();
-	int withdraw();
-	int deposit();
+	int withdraw(double amount);
+	int deposit(double amount);
 	void output();
 	double get_balance();
 

@@ -7,42 +7,43 @@ MMTransactions::MMTransactions() : MoneyMarket()
 MMTransactions::~MMTransactions()
 {}
 
-int MMTransactions::withdraw()
+int MMTransactions::withdraw(double amount)
 {
-	cout << "\nAttempting to withdraw $" << amount << "..." << endl;
+	//cout << "\nAttempting to withdraw $" << amount << "..." << endl;
 	if (amount > 0 && amount <= m_balance)
 	{
-		cout << "\tWITHDRAW COMPLETE" << endl;
+		//cout << "\tWITHDRAW COMPLETE" << endl;
 		transaction.insert(pair<int, double>(++m_key, amount));
+		m_balance -= amount;
 	}
-	/*else if (amount < 0)
+	else if (amount < 0)
 	{
-		cout << "Error, withdrawal amount must be greater than 0.\n\tCANNOT WITHDRAW." << endl;
-		return 1;
+		//cout << "Error, withdrawal amount must be greater than 0.\n\tCANNOT WITHDRAW." << endl;
+		return 0;
 	}
 	else if (amount > m_balance)
 	{
-		cout << "Error, withdrawal amount must be less than or equal to the balance.\n\tCANNOT WITHDRAW: INSUFFICIENT FUNDS" << endl;
-		return 1;
-	}*/
-	return 0;
+		//cout << "Error, withdrawal amount must be less than or equal to the balance.\n\tCANNOT WITHDRAW: INSUFFICIENT FUNDS" << endl;
+		return 0;
+	}
+	return 1;
 }
 
-int MMTransactions::deposit()
+int MMTransactions::deposit(double amount)
 {
-	cout << "\nAttempting to deposit $" << amount << "..." << endl;
+	//cout << "\nAttempting to deposit $" << amount << "..." << endl;
 	if (amount > 0)
 	{
 		m_balance += amount;
-		cout << "\tDEPOSIT COMPLETE" << endl;
+		//cout << "\tDEPOSIT COMPLETE" << endl;
 		transaction.insert(pair<int, double>(++m_key, amount));
+		return 1;
+	}
+	else
+	{
+		//cout << "Error, deposit amount must be non-negative.\n\tCANNOT DEPOSIT" << endl;
 		return 0;
 	}
-	/*else
-	{
-		cout << "Error, deposit amount must be non-negative.\n\tCANNOT DEPOSIT" << endl;
-		return 1;
-	}*/
 }
 void MMTransactions::output()
 {

@@ -2,7 +2,17 @@
 #include "StockTransactions.h"
 
 
-StockTransactions::StockTransactions(){}
+StockTransactions::StockTransactions(): m_purchasePrice(0), m_salePrice(0), m_gains(0), 
+	m_sharesOwned(0){}
+
+StockTransactions::StockTransactions(StockTransactions& a_transaction)
+{
+	m_purchasePrice = a_transaction.m_purchasePrice;
+	m_salePrice = a_transaction.m_salePrice;
+	m_gains = a_transaction.m_gains;
+	m_sharesOwned = a_transaction.m_sharesOwned;
+}
+
 StockTransactions::~StockTransactions(){}
 
 double StockTransactions::get_purchasePrice()
@@ -10,24 +20,42 @@ double StockTransactions::get_purchasePrice()
 	return m_purchasePrice;
 }
 
-int StockTransactions::get_numberOfShares()
+double StockTransactions::get_salePrice()
 {
-	return m_numberOfShares;
+	return m_salePrice;
+}
+int StockTransactions::get_sharesOwned()
+{
+	return m_sharesOwned;
 }
 
-double StockTransactions::set_purchasePrice(double price){}
-
-double StockTransactions::set_salePrice(double price){}
-
-int StockTransactions::set_numberOfShares(int shares){}
-
-int StockTransactions::purchase(Stocks symbol, MMTransactions mm, int number_of_shares)
+double StockTransactions::get_gains()
 {
-	double cost = symbol.get_currentPrice * number_of_shares;
-	if (mm.withdraw)
+	return m_gains;
+}
+
+void StockTransactions::set_purchasePrice(double price)
+{
+	m_purchasePrice = price;
+}
+
+void StockTransactions::set_salePrice(double price)
+{
+	m_salePrice = price;
+}
+
+void StockTransactions::set_sharesOwned(int shares)
+{
+	m_sharesOwned = shares;
+}
+
+int StockTransactions::purchase(Stocks symbol, MMTransactions mm, int shares)
+{
+	double cost = symbol.get_currentPrice() * shares;
+	if (mm.withdraw(cost))
 	{
 		set_purchasePrice(cost);
-		set_numberOfShares(number_of_shares);
+		set_sharesOwned(shares);
 		return 1;
 	}
 	else
@@ -36,17 +64,19 @@ int StockTransactions::purchase(Stocks symbol, MMTransactions mm, int number_of_
 	}
 }
 
-int StockTransactions::sell(Stocks symbol, MMTransactions mm, Portfolio portfolio, int number_of_shares)
+int StockTransactions::sell(Stocks symbol, MMTransactions mm, int number_of_shares)
 {
-	if (number_of_shares > portfolio.get_numShares())
+	if (number_of_shares > get_sharesOwned())
 	{
 		return 0;
 	}
 	else
 	{
-		set_salePrice(symbol.get_currentPrice * number_of_shares);
-		m_numberOfShares -= number_of_shares;
-		mm.deposit(m_salePrice);
+		set_salePrice(symbol.get_currentPrice() * number_of_shares);
+		set_sharesOwned(get_sharesOwned() - number_of_shares);
+		mm.deposit(get_salePrice());
+		m_gains = get_salePrice() - get_purchasePrice();
+		return 1;
 	}
 
 }
