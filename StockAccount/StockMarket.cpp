@@ -12,7 +12,7 @@ StockMarket::StockMarket()
 	int stock_list_len;
 	char temp_list[10];
 	stock_list_len = 30;
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 
 	m_infile = fopen("dow_jones.txt", "r");
 	if (m_infile == NULL)

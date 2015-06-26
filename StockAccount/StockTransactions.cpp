@@ -34,6 +34,11 @@ double StockTransactions::get_gains()
 	return m_gains;
 }
 
+string StockTransactions::get_symbol()
+{
+	return m_symbol;
+}
+
 void StockTransactions::set_purchasePrice(double price)
 {
 	m_purchasePrice = price;
@@ -49,26 +54,27 @@ void StockTransactions::set_sharesOwned(int shares)
 	m_sharesOwned = shares;
 }
 
-int StockTransactions::purchase(Stocks symbol, MMTransactions mm, int shares)
+bool StockTransactions::purchase(Stocks symbol, MMTransactions mm, int shares)
 {
 	double cost = symbol.get_currentPrice() * shares;
 	if (mm.withdraw(cost))
 	{
 		set_purchasePrice(cost);
 		set_sharesOwned(shares);
-		return 1;
+		set_symbol(symbol.get_symbol());
+		return true;
 	}
 	else
 	{
-		return 0;
+		return false;
 	}
 }
 
-int StockTransactions::sell(Stocks symbol, MMTransactions mm, int number_of_shares)
+bool StockTransactions::sell(Stocks symbol, MMTransactions mm, int number_of_shares)
 {
 	if (number_of_shares > get_sharesOwned())
 	{
-		return 0;
+		return false;
 	}
 	else
 	{
@@ -76,8 +82,13 @@ int StockTransactions::sell(Stocks symbol, MMTransactions mm, int number_of_shar
 		set_sharesOwned(get_sharesOwned() - number_of_shares);
 		mm.deposit(get_salePrice());
 		m_gains = get_salePrice() - get_purchasePrice();
-		return 1;
+		set_symbol(symbol.get_symbol());
+		return true;
 	}
+}
 
+void StockTransactions::set_symbol(char symbol[5])
+{
+	m_symbol = symbol;
 }
 

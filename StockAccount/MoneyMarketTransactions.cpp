@@ -7,7 +7,7 @@ MMTransactions::MMTransactions() : MoneyMarket()
 MMTransactions::~MMTransactions()
 {}
 
-int MMTransactions::withdraw(double amount)
+bool MMTransactions::withdraw(double amount)
 {
 	if (amount > 0 && amount <= m_balance)
 	{
@@ -26,7 +26,7 @@ int MMTransactions::withdraw(double amount)
 	return true;
 }
 
-int MMTransactions::deposit(double amount)
+bool MMTransactions::deposit(double amount)
 {
 	if (amount > 0)
 	{
