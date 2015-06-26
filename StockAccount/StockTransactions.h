@@ -5,31 +5,32 @@
 #include "Stocks.h"
 #include "MoneyMarketTransactions.h"
 
+enum class transactionType {PURCHASE, SALE, NA};
+
 class StockTransactions
 {
 public:
 	StockTransactions();
-	StockTransactions(StockTransactions& a_transaction);
 	~StockTransactions();
-	double get_purchasePrice();
-	double get_salePrice();
+	double get_price();
 	int get_sharesOwned();
 	double get_gains();
-	string get_symbol();
-	void set_purchasePrice(double price);
-	void set_salePrice(double price);
-	void set_sharesOwned(int shares);
+	std::string get_symbol();
+	transactionType get_transactionType();
+	void set_price(double price);
+	void set_shares(int shares);
 	void set_symbol(char symbol[5]);
 	bool purchase(Stocks symbol, MMTransactions mm, int shares);
-	bool sell(Stocks symbol, MMTransactions mm, int number_of_shares);
+	bool sell(Stocks symbol, MMTransactions mm, int shares, int shares_owned);
+	std::string displayTransactionType();
 	void displayTransaction();
 
 private:
-	double m_purchasePrice;
-	double m_salePrice;
+	double m_price;
 	double m_gains;
-	int m_sharesOwned;
-	string m_symbol;
+	int m_shares;
+	std::string m_symbol;
+	transactionType m_transactionType;
 };
 
 #endif

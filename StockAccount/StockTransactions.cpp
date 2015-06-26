@@ -2,31 +2,19 @@
 #include "StockTransactions.h"
 
 
-StockTransactions::StockTransactions(): m_purchasePrice(0), m_salePrice(0), m_gains(0), 
-	m_sharesOwned(0){}
-
-StockTransactions::StockTransactions(StockTransactions& a_transaction)
-{
-	m_purchasePrice = a_transaction.m_purchasePrice;
-	m_salePrice = a_transaction.m_salePrice;
-	m_gains = a_transaction.m_gains;
-	m_sharesOwned = a_transaction.m_sharesOwned;
-}
+StockTransactions::StockTransactions(): m_price(0), m_gains(0), 
+	m_shares(0), m_symbol("Missing"), m_transactionType(transactionType::NA){}
 
 StockTransactions::~StockTransactions(){}
 
-double StockTransactions::get_purchasePrice()
+double StockTransactions::get_price()
 {
-	return m_purchasePrice;
+	return m_price;
 }
 
-double StockTransactions::get_salePrice()
-{
-	return m_salePrice;
-}
 int StockTransactions::get_sharesOwned()
 {
-	return m_sharesOwned;
+	return m_shares;
 }
 
 double StockTransactions::get_gains()
@@ -34,24 +22,23 @@ double StockTransactions::get_gains()
 	return m_gains;
 }
 
-string StockTransactions::get_symbol()
+std::string StockTransactions::get_symbol()
 {
 	return m_symbol;
 }
-
-void StockTransactions::set_purchasePrice(double price)
+transactionType StockTransactions::get_transactionType()
 {
-	m_purchasePrice = price;
+	return m_transactionType;
 }
 
-void StockTransactions::set_salePrice(double price)
+void StockTransactions::set_price(double price)
 {
-	m_salePrice = price;
+	m_price = price;
 }
 
-void StockTransactions::set_sharesOwned(int shares)
+void StockTransactions::set_shares(int shares)
 {
-	m_sharesOwned = shares;
+	m_shares = shares;
 }
 
 bool StockTransactions::purchase(Stocks symbol, MMTransactions mm, int shares)
@@ -59,9 +46,10 @@ bool StockTransactions::purchase(Stocks symbol, MMTransactions mm, int shares)
 	double cost = symbol.get_currentPrice() * shares;
 	if (mm.withdraw(cost))
 	{
-		set_purchasePrice(cost);
-		set_sharesOwned(shares);
+		set_price(cost);
+		set_shares(shares);
 		set_symbol(symbol.get_symbol());
+		m_transactionType = transactionType::PURCHASE;
 		return true;
 	}
 	else
@@ -70,23 +58,24 @@ bool StockTransactions::purchase(Stocks symbol, MMTransactions mm, int shares)
 	}
 }
 
-bool StockTransactions::sell(Stocks symbol, MMTransactions mm, int number_of_shares)
+bool StockTransactions::sell(Stocks symbol, MMTransactions mm, int shares, int shares_owned)
 {
-	if (number_of_shares > get_sharesOwned())
+	if (shares > get_sharesOwned())
 	{
 		return false;
 	}
 	else
 	{
-		set_salePrice(symbol.get_currentPrice() * number_of_shares);
-		set_sharesOwned(get_sharesOwned() - number_of_shares);
-		mm.deposit(get_salePrice());
-		m_gains = get_salePrice() - get_purchasePrice();
+		set_price(symbol.get_currentPrice() * shares);
+		set_shares(get_sharesOwned() - shares);
+		mm.deposit(get_price());
+		m_gains = get_price() - get_price();
 		set_symbol(symbol.get_symbol());
 		if (get_gains() > 0)
 		{
 			mm.deposit(get_gains());
 		}
+		m_transactionType = transactionType::SALE;
 		return true;
 	}
 }
@@ -96,3 +85,23 @@ void StockTransactions::set_symbol(char symbol[5])
 	m_symbol = symbol;
 }
 
+std::string StockTransactions::displayTransactionType()
+{
+	if (m_transactionType == transactionType::PURCHASE)
+	{
+		return "Purchase";
+	}
+	else if (m_transactionType == transactionType::SALE)
+	{
+		return "Sale";
+	}
+	else
+	{
+		return "---";
+	}
+}
+void StockTransactions::displayTransaction()
+{
+	std::cout << m_symbol << "\t" << displayTransactionType() << "\t" << m_shares << "\t"
+		<< m_price << "\t" << m_price * m_shares << std::endl;
+}

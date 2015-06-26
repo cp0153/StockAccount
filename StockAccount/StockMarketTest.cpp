@@ -5,7 +5,7 @@
 //#include "MoneyMarket.h"
 //#include "StockTransactions.h"
 //
-//void/*int*/ main()
+//int main()
 //{
 //	StockMarket test;
 //	test.displayStockMarket();
@@ -18,26 +18,28 @@
 //	std::cout << "\n";
 //	test.updateStockMarket();
 //	test.displayStockMarket();
-//
-//	std::map<int, Stocks> m;
-//	m.insert(std::pair<int, Stocks>(1, test.get_stock(5)));
-//	m.insert(std::pair<int, Stocks>(2, test.get_stock(8)));
-//	//std::vector<int> v;
-//	for (std::map<int, Stocks>::iterator it = m.begin(); it != m.end(); ++it)
-//	{
-//		std::cout << it->first << ": ";
-//		std::cout << it->second.get_symbol() << "\n";
-//	}
-//	double amount = 5000000;
 //	MMTransactions acc1;
-//	if (acc1.deposit(amount))
-//	{
-//		std::cout << "deposit of " << amount << " successful" << std::endl;
-//	}
-//	else
-//	{
-//		std::cout << "deposit of " << amount << " failed" << std::endl;
-//	}
+//	acc1.deposit(50000);
+//
+//	//std::map<int, Stocks> m;
+//	//m.insert(std::pair<int, Stocks>(1, test.get_stock(5)));
+//	//m.insert(std::pair<int, Stocks>(2, test.get_stock(8)));
+//	////std::vector<int> v;
+//	//for (std::map<int, Stocks>::iterator it = m.begin(); it != m.end(); ++it)
+//	//{
+//	//	std::cout << it->first << ": ";
+//	//	std::cout << it->second.get_symbol() << "\n";
+//	//}
+//	//double amount = 5000000;
+//	//MMTransactions acc1;
+//	//if (acc1.deposit(amount))
+//	//{
+//	//	std::cout << "deposit of " << amount << " successful" << std::endl;
+//	//}
+//	//else
+//	//{
+//	//	std::cout << "deposit of " << amount << " failed" << std::endl;
+//	//}
 //	//int choice;
 //	//do
 //	//{
@@ -82,22 +84,23 @@
 //	}
 //	else
 //	{
-//		std::cout << "Fail" << endl;
+//		std::cout << "Fail" << std::endl;
 //	}
 //	test.updateStockMarket();
 //	std::cout << "shares owned " << testtrans.get_sharesOwned() << std::endl;
 //
-//	if (testtrans.sell(test.get_stock(5), acc1, 3))
+//	if (testtrans.sell(test.get_stock(5), acc1, 3, 5))
 //	{
 //		std::cout << "sale of " << test.get_stock(5).get_symbol() << " successful ";
 //		std::cout << "3 shares at " << test.get_stock(5).get_currentPrice() << std::endl;
 //	}
 //	else
 //	{
-//		std::cout << "Fail" << endl;
+//		std::cout << "Fail" << std::endl;
 //	}
 //	std::cout << "gained/lost " << testtrans.get_gains() << std::endl;
-//	std::cout << "sold at " << testtrans.get_salePrice() << std::endl;
+//	std::cout << "sold at " << testtrans.get_price() << std::endl;
 //	std::cout << "shares owned " << testtrans.get_sharesOwned() << std::endl;
+//	testtrans.displayTransaction();
 //	return 0;
 //}

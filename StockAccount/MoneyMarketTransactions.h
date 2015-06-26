@@ -6,7 +6,6 @@
 #include <map>
 #include "MoneyMarket.h"
 
-using namespace std;
 
 class MMTransactions : public MoneyMarket
 {
@@ -15,11 +14,12 @@ public:
 	virtual ~MMTransactions();
 	bool withdraw(double amount);
 	bool deposit(double amount);
-	void output();
+	void displayRecentTransactions();
 	double get_balance();
+	void displayBalance();
 
 protected:
-	map < int, double > transaction;
+	std::map < int, double > transaction;
 	double amount;
 	int m_key = 1;
 };

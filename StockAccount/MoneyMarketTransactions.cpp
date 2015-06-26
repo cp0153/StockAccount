@@ -11,8 +11,8 @@ bool MMTransactions::withdraw(double amount)
 {
 	if (amount > 0 && amount <= m_balance)
 	{
-		std::cout << "\tWITHDRAW COMPLETE" << std::endl;
-		transaction.insert(pair<int, double>(++m_key, amount));
+		//std::cout << "\tWITHDRAW COMPLETE" << std::endl;
+		transaction.insert(std::pair<int, double>(++m_key, amount));
 		m_balance -= amount;
 	}
 	else if (amount < 0)
@@ -31,8 +31,8 @@ bool MMTransactions::deposit(double amount)
 	if (amount > 0)
 	{
 		m_balance += amount;
-		std::cout << "\tDEPOSIT COMPLETE" << std::endl;
-		transaction.insert(pair<int, double>(++m_key, amount));
+		//std::cout << "\tDEPOSIT COMPLETE" << std::endl;
+		transaction.insert(std::pair<int, double>(++m_key, amount));
 		return true;
 	}
 	else
@@ -40,17 +40,25 @@ bool MMTransactions::deposit(double amount)
 		return false;
 	}
 }
-void MMTransactions::output()
+
+void MMTransactions::displayRecentTransactions()
 {
 	std::cout << "\nYou have $" << get_balance() << " in your account" << std::endl;
-	map<int, double>::iterator pos;
+	std::cout << "\n";
+	std::map<int, double>::iterator pos;
 	for (pos = transaction.begin(); pos != transaction.end(); ++pos)
 	{
-		std::cout << "Key: " << pos->first << " value: $" << pos->second << std::endl;
+		std::cout << "Transaction #:\t" << pos->first << " value: $" << pos->second << std::endl;
 	}
 	std::cout << std::endl;
 }
+
 double MMTransactions::get_balance()
 {
 	return m_balance;
+}
+
+void MMTransactions::displayBalance()
+{
+	std::cout << "\nYou have $" << get_balance() << " in your account" << std::endl;
 }

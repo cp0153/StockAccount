@@ -2,6 +2,8 @@
 #define PORTFOLIO_H
 #include <map>
 #include "StockTransactions.h"
+#include "StockMarket.h"
+#include "MoneyMarketTransactions.h"
 
 class Portfolio
 {
@@ -9,16 +11,19 @@ public:
 	Portfolio();
 	~Portfolio();
 	void displayRecentTransactions();
-	void addTransaction(StockTransactions newTrade);
+	void addTransaction(StockMarket dow, MMTransactions mm);
 	void displayCurrentValue();
 	void displayOriginalvalue();
-	void displayGainLoss();
+	void displayTotalGainLoss();
 	double get_gainLoss();
-	double get_NetValue();
+	double get_currentValue();
 	int get_key();
 private:
+	//map of every transaction listed in order from first to last
 	std::map <int, StockTransactions> m_stockLedger;
-	double m_gainLoss;
+	//map of holdings, stores the number of shares of every stock owned
+	std::map <std::string, int> m_holdings;
+	double m_totalGainLoss;
 	double m_currentValue;
 	double m_originalValue;
 	int m_key;
