@@ -113,9 +113,10 @@ void brokerageAccount::portfolioMenu(MMTransactions& acc1, StockMarket& dow, Por
 		switch (user_input)
 		{
 		case 1:
-			portfolio.displayCurrentValue();
-			//portfolio.displayOriginalvalue();
-			portfolio.displayTotalGainLoss();
+			/*portfolio.displayCurrentValue();
+			portfolio.displayOriginalvalue();
+			portfolio.displayTotalGainLoss();*/
+			portfolio.displayHoldings();
 			//std::cout << "display portfolio holdings here\n";
 			break;
 		case 2:

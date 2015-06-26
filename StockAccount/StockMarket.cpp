@@ -1,7 +1,6 @@
 #include "StockMarket.h"
 #include <string.h>
 #include <cstdlib>
-#include <stdio.h>
 #include <ctime>
 
 //reads in ticker symbols from a file, randomly generates prices that will be matched

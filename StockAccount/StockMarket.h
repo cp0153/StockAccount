@@ -3,6 +3,7 @@
 #include <vector>
 #include <stdio.h>
 #include "Stocks.h"
+#include <stdio.h>
 
 class StockMarket
 {
