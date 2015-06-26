@@ -1,6 +1,7 @@
 #ifndef STOCK_MARKET_H
 #define STOCK_MARKET_H
 #include <vector>
+#include <stdio.h>
 #include "Stocks.h"
 
 class StockMarket
@@ -11,7 +12,7 @@ public:
 	void displayStockMarket();
 	void updateStockMarket();
 	Stocks get_stock(int selection);
-	
+
 
 private:
 	std::vector <Stocks> Market;
