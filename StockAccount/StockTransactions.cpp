@@ -83,6 +83,10 @@ bool StockTransactions::sell(Stocks symbol, MMTransactions mm, int number_of_sha
 		mm.deposit(get_salePrice());
 		m_gains = get_salePrice() - get_purchasePrice();
 		set_symbol(symbol.get_symbol());
+		if (get_gains() > 0)
+		{
+			mm.deposit(get_gains());
+		}
 		return true;
 	}
 }
