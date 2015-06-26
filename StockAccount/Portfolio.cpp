@@ -46,6 +46,7 @@ void Portfolio::addTransaction(StockMarket dow, MMTransactions mm)
 				std::cout << "invalid input, please enter a number between 1 and 30: ";
 				std::cin >> stock_choice;
 			}
+			stock_choice -= 1;
 			std::cout << dow.get_stock(stock_choice).get_symbol() << " costs ";
 			std::cout << dow.get_stock(stock_choice).get_currentPrice() << " per share.\n";
 			std::cout << "How many shares would you like to purchase? please enter a positive number: ";
@@ -78,8 +79,9 @@ void Portfolio::addTransaction(StockMarket dow, MMTransactions mm)
 			}
 			std::cout << dow.get_stock(stock_choice).get_symbol() << " is currently trading at ";
 			std::cout << dow.get_stock(stock_choice).get_currentPrice() << " per share.\n";
-			std::cout << "How many shares would you like to sell?" << "You currently own" << m_holdings[dow.get_stock(stock_choice).get_symbol()] << "shares\n";
-			std::cout << " enter a positive number less than or equal to the amount of shares you currently own: ";
+			std::cout << "How many shares would you like to sell?" << " You currently own" << m_holdings[dow.get_stock(stock_choice).get_symbol()] << " shares\n";
+			std::cout << "Enter a positive number less than or equal to the amount of shares you";
+			std::cout << " currently own : ";
 			std::cin >> shares;
 			while (shares < 0 || shares > m_holdings[dow.get_stock(stock_choice).get_symbol()])
 			{

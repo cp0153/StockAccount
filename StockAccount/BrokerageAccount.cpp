@@ -9,6 +9,7 @@ void brokerageAccount::mainMenu()
 	StockMarket dow;
 	Portfolio portfolio;
 	int main_choice;
+	do{		
 	std::cout << "What Would You Like To Do?" << std::endl;
 	std::cout << "(1) Switch To Money Market\n";
 	std::cout << "(2) Switch To Portfolio\n";
@@ -19,8 +20,7 @@ void brokerageAccount::mainMenu()
 		std::cout << "invalid input, please enter a number between 1 and 3 or 0 to quit: ";
 		std::cin >> main_choice;
 	}
-	do
-	{
+	
 	switch (main_choice)
 		{
 		case 1:
@@ -29,14 +29,12 @@ void brokerageAccount::mainMenu()
 		case 2:
 			portfolioMenu(acc1, dow, portfolio);
 			break;
-		case 0:
-			return;
 		}
-	} while (true);
+	} while (main_choice != 0);
 	
 }
 
-bool brokerageAccount::moneyMarketMenu(MMTransactions& acc1, StockMarket& dow, Portfolio& portfolio)
+void brokerageAccount::moneyMarketMenu(MMTransactions& acc1, StockMarket& dow, Portfolio& portfolio)
 {
 	double amount;
 	//MMTransactions acc1;
@@ -90,11 +88,8 @@ bool brokerageAccount::moneyMarketMenu(MMTransactions& acc1, StockMarket& dow, P
 		case 4:
 			acc1.displayRecentTransactions();
 			break;
-		case 0:
-			return false;
 		}
-
-	} while (true);
+	} while (user_input != 0);
 	
 }
 
@@ -135,10 +130,8 @@ void brokerageAccount::portfolioMenu(MMTransactions& acc1, StockMarket& dow, Por
 			portfolio.addTransaction(dow, acc1);
 			dow.updateStockMarket();
 			break;
-		case 0:
-			return;
 		}
-	} while (true);
+	} while (user_input != 0);
 	
 	
 }

@@ -48,7 +48,7 @@ void MMTransactions::displayRecentTransactions()
 	std::map<int, double>::iterator pos;
 	for (pos = transaction.begin(); pos != transaction.end(); ++pos)
 	{
-		std::cout << "Transaction #:\t" << pos->first << " value: $" << pos->second << std::endl;
+		std::cout << "Transaction #:" << pos->first << "\tvalue: $" << pos->second << std::endl;
 	}
 	std::cout << std::endl;
 }
