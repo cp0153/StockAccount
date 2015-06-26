@@ -1,6 +1,6 @@
 #include "Portfolio.h"
 
-Portfolio::Portfolio(): m_totalGainLoss(0), m_currentValue(0), m_key(0), m_originalValue(0){}
+Portfolio::Portfolio(): m_totalGainLoss(0), m_currentValue(0), m_originalValue(0), m_key(0){}
 
 Portfolio::~Portfolio(){}
 
@@ -111,11 +111,25 @@ void Portfolio::displayCurrentValue()
 	std::cout << m_currentValue << std::endl;
 }
 
+void Portfolio::displayOriginalvalue()
+{
+	std::cout << m_originalValue << std::endl;
+}
 void Portfolio::displayTotalGainLoss()
 {
 	std::cout << m_totalGainLoss << std::endl;
 }
 
+void Portfolio::displayHoldings()
+{
+	std::cout << "Symbol\tShares" << std::endl;
+	for (std::map<std::string, int>::iterator it = m_holdings.begin();
+		it != m_holdings.end(); ++it)
+	{
+		std::cout << it->first << ": ";
+		std:: cout << it->second << "\t";
+	}
+}
 double Portfolio::get_gainLoss()
 {
 	return m_totalGainLoss;

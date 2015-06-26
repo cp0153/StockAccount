@@ -15,6 +15,7 @@ public:
 	void displayCurrentValue();
 	void displayOriginalvalue();
 	void displayTotalGainLoss();
+	void displayHoldings();
 	double get_gainLoss();
 	double get_currentValue();
 	int get_key();

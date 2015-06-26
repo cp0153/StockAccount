@@ -2,6 +2,7 @@
 #define STOCK_MARKET_H
 #include <vector>
 #include "Stocks.h"
+#include <stdio.h>
 
 class StockMarket
 {
