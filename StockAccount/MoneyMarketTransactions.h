@@ -2,7 +2,6 @@
 #define MONEYMARKETTRANSACTIONS_H
 
 #include <iostream>
-#include <string>
 #include <map>
 #include "MoneyMarket.h"
 
@@ -18,9 +17,8 @@ public:
 	double get_balance();
 	void displayBalance();
 
-protected:
+private:
 	std::map < int, double > transaction;
-	double amount;
-	int m_key = 1;
+	int m_key;
 };
 #endif

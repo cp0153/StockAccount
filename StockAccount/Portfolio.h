@@ -11,7 +11,7 @@ public:
 	Portfolio();
 	~Portfolio();
 	void displayRecentTransactions();
-	void addTransaction(StockMarket dow, MMTransactions mm);
+	void addTransaction(StockMarket& dow, MMTransactions& mm);
 	void displayCurrentValue();
 	void displayOriginalvalue();
 	void displayTotalGainLoss();

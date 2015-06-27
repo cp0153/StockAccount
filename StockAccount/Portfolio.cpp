@@ -15,7 +15,7 @@ void Portfolio::displayRecentTransactions()
 		}
 }
 
-void Portfolio::addTransaction(StockMarket dow, MMTransactions mm)
+void Portfolio::addTransaction(StockMarket& dow, MMTransactions& mm)
 {
 	int user_input, stock_choice, shares;
 	StockTransactions newTrade;
@@ -61,8 +61,11 @@ void Portfolio::addTransaction(StockMarket dow, MMTransactions mm)
 			if (newTrade.purchase(dow.get_stock(stock_choice).get_symbol(), mm, shares))
 			{
 				m_stockLedger.insert(std::pair<int, StockTransactions>(m_key, newTrade));
-				m_holdings.insert(std::pair<std::string, int>(dow.get_stock(stock_choice).get_symbol(), shares));
+				m_holdings[dow.get_stock(stock_choice).get_symbol()] += shares;
+				//m_holdings.insert(std::pair<std::string, int>(dow.get_stock(stock_choice).get_symbol(), shares));
 				updateOriginalValue(newTrade);
+				std::cout << "purchase sucessful\n";
+				dow.updateStockMarket();
 			}
 			else
 			{
@@ -77,6 +80,7 @@ void Portfolio::addTransaction(StockMarket dow, MMTransactions mm)
 				std::cout << "invalid input, please enter a number between 1 and 30: ";
 				std::cin >> stock_choice;
 			}
+			stock_choice -= 1;
 			std::cout << dow.get_stock(stock_choice).get_symbol() << " is currently trading at ";
 			std::cout << dow.get_stock(stock_choice).get_currentPrice() << " per share.\n";
 			std::cout << "How many shares would you like to sell?" << " You currently own" << m_holdings[dow.get_stock(stock_choice).get_symbol()] << " shares\n";
@@ -93,8 +97,11 @@ void Portfolio::addTransaction(StockMarket dow, MMTransactions mm)
 			if (newTrade.sell(dow.get_stock(stock_choice).get_symbol(), mm, shares, m_holdings[dow.get_stock(stock_choice).get_symbol()]))
 			{
 				m_stockLedger.insert(std::pair<int, StockTransactions>(m_key, newTrade));
-				m_holdings.insert(std::pair<std::string, int>(dow.get_stock(stock_choice).get_symbol(), shares));
+				m_holdings[dow.get_stock(stock_choice).get_symbol()] += (-shares);
+				//m_holdings.insert(std::pair<std::string, int>(dow.get_stock(stock_choice).get_symbol(), -shares));
 				updateOriginalValue(newTrade);
+				std::cout << "sale sucessful\n";
+				dow.updateStockMarket();
 			}
 			else
 			{
@@ -126,8 +133,8 @@ void Portfolio::displayHoldings()
 	for (std::map<std::string, int>::iterator it = m_holdings.begin();
 		it != m_holdings.end(); ++it)
 	{
-		std::cout << it->first << ": ";
-		std:: cout << it->second << "\t";
+		std::cout << it->first << "\t";
+		std:: cout << it->second << "\n";
 	}
 }
 double Portfolio::get_gainLoss()
@@ -154,4 +161,3 @@ void Portfolio::updateOriginalValue(StockTransactions newTrade)
 {
 	m_originalValue += newTrade.get_price();
 }
-

@@ -6,6 +6,9 @@ brokerageAccount::~brokerageAccount(){}
 void brokerageAccount::mainMenu()
 {
 	MMTransactions acc1;
+	acc1.deposit(10000);
+	std::cout << acc1.get_name() << " $" << acc1.get_balance() << " has been deposited into your account.";
+	std::cout << "\n";
 	StockMarket dow;
 	Portfolio portfolio;
 	int main_choice;
@@ -30,8 +33,11 @@ void brokerageAccount::mainMenu()
 			portfolioMenu(acc1, dow, portfolio);
 			break;
 		}
-	} while (main_choice != 0);
-	
+	} while (main_choice != 0 && acc1.get_balance() > 1);
+	if (acc1.get_balance() <= 1)
+	{
+		std::cout << "You are out of money!\n";
+	}
 }
 
 void brokerageAccount::moneyMarketMenu(MMTransactions& acc1, StockMarket& dow, Portfolio& portfolio)
@@ -63,14 +69,14 @@ void brokerageAccount::moneyMarketMenu(MMTransactions& acc1, StockMarket& dow, P
 			std::cout << "How Much?\n";
 			std::cin >> amount;
 			std::cout << "\nAttempting to withdraw $" << amount << "..." << std::endl;
-			acc1.withdraw(amount);
-			if (amount < 0)
+			if (acc1.withdraw(amount))
 			{
-				std::cout << "Error, withdrawal amount must be greater than 0.\n\tCANNOT WITHDRAW." << std::endl;
+				std::cout << "withdraw of " << amount << " successful." << std::endl;
 			}
-			else if (amount > acc1.get_balance())
+			else
 			{
-				std::cout << "Error, withdrawal amount must be less than or equal to the balance.\n\tCANNOT WITHDRAW: INSUFFICIENT FUNDS" << std::endl;
+				std::cout << "Error, withdrawal amount must be less than or equal to the balance." << std::endl;
+				std::cout << "and greater than zero" << std::endl;
 			}
 			dow.updateStockMarket();
 			break;
@@ -78,8 +84,11 @@ void brokerageAccount::moneyMarketMenu(MMTransactions& acc1, StockMarket& dow, P
 			std::cout << "How Much?\n";
 			std::cin >> amount;
 			std::cout << "\nAttempting to deposit $" << amount << "..." << std::endl;
-			acc1.deposit(amount);
-			if (amount < 0)
+			if (acc1.deposit(amount))
+			{
+				std::cout << "Deposit of " << amount << " successful" << std::endl;
+			}
+			else
 			{
 				std::cout << "Error, deposit amount must be non-negative.\n\tCANNOT DEPOSIT" << std::endl;
 			}
@@ -89,7 +98,7 @@ void brokerageAccount::moneyMarketMenu(MMTransactions& acc1, StockMarket& dow, P
 			acc1.displayRecentTransactions();
 			break;
 		}
-	} while (user_input != 0);
+	} while (user_input != 0 && acc1.get_balance() > 1);
 	
 }
 
@@ -113,26 +122,16 @@ void brokerageAccount::portfolioMenu(MMTransactions& acc1, StockMarket& dow, Por
 		switch (user_input)
 		{
 		case 1:
-			/*portfolio.displayCurrentValue();
-			portfolio.displayOriginalvalue();
-			portfolio.displayTotalGainLoss();*/
 			portfolio.displayHoldings();
-			//std::cout << "display portfolio holdings here\n";
 			break;
 		case 2:
-			//std::cout << "view recent transactions here, by calling portfolio.displayRecent";
-				//std::cout << "Transactions()\n"; 
 				portfolio.displayRecentTransactions();
 			break;
 		case 3:
-			//std::cout << "call portfolio.addTransaction() here\n";
-			//	Dow.buy();
-			//	cout << "You Bought Stock " << Stock Name << " For " << amount;
 			portfolio.addTransaction(dow, acc1);
-			dow.updateStockMarket();
 			break;
 		}
-	} while (user_input != 0);
+	} while (user_input != 0 && acc1.get_balance() > 1);
 	
 	
 }

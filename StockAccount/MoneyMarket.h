@@ -2,15 +2,12 @@
 #define MONEYMARKET_H
 
 #include <string>
-#include <map>
-
 
 class MoneyMarket
 {
 public:
 	MoneyMarket();
 	~MoneyMarket();
-	double get_balance();
 	std::string get_name();
 
 protected:

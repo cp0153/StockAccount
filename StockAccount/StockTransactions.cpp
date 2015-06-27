@@ -1,7 +1,6 @@
 #include <iostream>
 #include "StockTransactions.h"
 
-
 StockTransactions::StockTransactions(): m_price(0), m_gains(0), 
 	m_shares(0), m_symbol("Missing"), m_transactionType(transactionType::NA){}
 
@@ -41,7 +40,7 @@ void StockTransactions::set_shares(int shares)
 	m_shares = shares;
 }
 
-bool StockTransactions::purchase(Stocks symbol, MMTransactions mm, int shares)
+bool StockTransactions::purchase(Stocks symbol, MMTransactions& mm, int shares)
 {
 	double cost = symbol.get_currentPrice() * shares;
 	if (mm.withdraw(cost))
@@ -58,7 +57,7 @@ bool StockTransactions::purchase(Stocks symbol, MMTransactions mm, int shares)
 	}
 }
 
-bool StockTransactions::sell(Stocks symbol, MMTransactions mm, int shares, int shares_owned)
+bool StockTransactions::sell(Stocks symbol, MMTransactions& mm, int shares, int shares_owned)
 {
 	if (shares > get_sharesOwned())
 	{
@@ -93,11 +92,11 @@ std::string StockTransactions::displayTransactionType()
 	}
 	else if (m_transactionType == transactionType::SALE)
 	{
-		return "Sale";
+		return "Sale\t";
 	}
 	else
 	{
-		return "---";
+		return "----\t";
 	}
 }
 void StockTransactions::displayTransaction()

@@ -3,6 +3,7 @@
 MMTransactions::MMTransactions() : MoneyMarket()
 {
 	m_balance = 0;
+	m_key = 0;
 }
 MMTransactions::~MMTransactions()
 {}
@@ -11,9 +12,9 @@ bool MMTransactions::withdraw(double amount)
 {
 	if (amount > 0 && amount <= m_balance)
 	{
-		//std::cout << "\tWITHDRAW COMPLETE" << std::endl;
 		transaction.insert(std::pair<int, double>(++m_key, amount));
 		m_balance -= amount;
+		return true;
 	}
 	else if (amount < 0)
 	{
@@ -23,7 +24,7 @@ bool MMTransactions::withdraw(double amount)
 	{
 		return false;
 	}
-	return true;
+	
 }
 
 bool MMTransactions::deposit(double amount)
@@ -31,7 +32,6 @@ bool MMTransactions::deposit(double amount)
 	if (amount > 0)
 	{
 		m_balance += amount;
-		//std::cout << "\tDEPOSIT COMPLETE" << std::endl;
 		transaction.insert(std::pair<int, double>(++m_key, amount));
 		return true;
 	}

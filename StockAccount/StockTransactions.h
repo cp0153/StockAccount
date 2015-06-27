@@ -20,8 +20,8 @@ public:
 	void set_price(double price);
 	void set_shares(int shares);
 	void set_symbol(char symbol[5]);
-	bool purchase(Stocks symbol, MMTransactions mm, int shares);
-	bool sell(Stocks symbol, MMTransactions mm, int shares, int shares_owned);
+	bool purchase(Stocks symbol, MMTransactions& mm, int shares);
+	bool sell(Stocks symbol, MMTransactions& mm, int shares, int shares_owned);
 	std::string displayTransactionType();
 	void displayTransaction();
 
