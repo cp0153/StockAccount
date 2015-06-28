@@ -5,6 +5,7 @@
 //#include "MoneyMarket.h"
 //#include "StockTransactions.h"
 //
+//These are the tests for the various classes and methods
 //int main()
 //{
 //	StockMarket test;

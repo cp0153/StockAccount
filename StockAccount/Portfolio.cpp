@@ -62,7 +62,6 @@ void Portfolio::addTransaction(StockMarket& dow, MMTransactions& mm)
 			{
 				m_stockLedger.insert(std::pair<int, StockTransactions>(m_key, newTrade));
 				m_holdings[dow.get_stock(stock_choice).get_symbol()] += shares;
-				//m_holdings.insert(std::pair<std::string, int>(dow.get_stock(stock_choice).get_symbol(), shares));
 				updateOriginalValue(newTrade);
 				std::cout << "purchase sucessful\n";
 				dow.updateStockMarket();
@@ -98,7 +97,6 @@ void Portfolio::addTransaction(StockMarket& dow, MMTransactions& mm)
 			{
 				m_stockLedger.insert(std::pair<int, StockTransactions>(m_key, newTrade));
 				m_holdings[dow.get_stock(stock_choice).get_symbol()] += (-shares);
-				//m_holdings.insert(std::pair<std::string, int>(dow.get_stock(stock_choice).get_symbol(), -shares));
 				updateOriginalValue(newTrade);
 				std::cout << "sale sucessful\n";
 				dow.updateStockMarket();

@@ -43,8 +43,6 @@ void brokerageAccount::mainMenu()
 void brokerageAccount::moneyMarketMenu(MMTransactions& acc1, StockMarket& dow, Portfolio& portfolio)
 {
 	double amount;
-	//MMTransactions acc1;
-	//StockMarket Dow;
 	int user_input;
 	do
 	{
@@ -104,7 +102,6 @@ void brokerageAccount::moneyMarketMenu(MMTransactions& acc1, StockMarket& dow, P
 
 void brokerageAccount::portfolioMenu(MMTransactions& acc1, StockMarket& dow, Portfolio& portfolio)
 {
-	//StockMarket Dow;
 	int user_input;
 	do
 	{

@@ -15,10 +15,6 @@ public:
 	void mainMenu();
 	void moneyMarketMenu(MMTransactions& acc1, StockMarket& dow, Portfolio& portfolio);
 	void portfolioMenu(MMTransactions& acc1, StockMarket& dow, Portfolio& portfolio);
-//private:
-	//MoneyMarket m_money_market;
-	//Portfolio m_Portfolio;
-
 };
 
 #endif

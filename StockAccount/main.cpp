@@ -4,8 +4,8 @@ int main()
 {
 	std::cout << std::fixed;
 	std::cout << std::setprecision(2);
-	brokerageAccount test;
-	test.mainMenu();
+	brokerageAccount brokerage_account;
+	brokerage_account.mainMenu();
 
 	return 0;
 }

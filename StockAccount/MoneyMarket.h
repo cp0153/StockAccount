@@ -13,7 +13,6 @@ public:
 protected:
 	std::string m_name;
 	double m_balance;
-	
 };
 
 #endif
