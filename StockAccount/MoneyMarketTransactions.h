@@ -10,7 +10,8 @@ class MMTransactions : public MoneyMarket
 {
 public:
 	MMTransactions();
-	virtual ~MMTransactions();
+	MMTransactions(std::string name, double balance);
+	~MMTransactions();
 	bool withdraw(double amount);
 	bool deposit(double amount);
 	void displayRecentTransactions();

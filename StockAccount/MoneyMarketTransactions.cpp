@@ -5,6 +5,9 @@ MMTransactions::MMTransactions() : MoneyMarket()
 	m_balance = 0;
 	m_key = 0;
 }
+
+MMTransactions::MMTransactions(std::string name, double balance): MoneyMarket(name, balance), m_key(0){}
+
 MMTransactions::~MMTransactions()
 {}
 

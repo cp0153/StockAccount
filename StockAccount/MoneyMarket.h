@@ -7,7 +7,8 @@ class MoneyMarket
 {
 public:
 	MoneyMarket();
-	~MoneyMarket();
+	MoneyMarket(std::string name, double balance);
+	virtual ~MoneyMarket();
 	std::string get_name();
 
 protected:
