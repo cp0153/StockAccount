@@ -82,7 +82,7 @@ void Portfolio::addTransaction(StockMarket& dow, MMTransactions& mm)
 			stock_choice -= 1;
 			std::cout << dow.get_stock(stock_choice).get_symbol() << " is currently trading at ";
 			std::cout << dow.get_stock(stock_choice).get_currentPrice() << " per share.\n";
-			std::cout << "How many shares would you like to sell?" << " You currently own" << m_holdings[dow.get_stock(stock_choice).get_symbol()] << " shares\n";
+			std::cout << "How many shares would you like to sell?" << " You currently own " << m_holdings[dow.get_stock(stock_choice).get_symbol()] << " shares\n";
 			std::cout << "Enter a positive number less than or equal to the amount of shares you";
 			std::cout << " currently own : ";
 			std::cin >> shares;

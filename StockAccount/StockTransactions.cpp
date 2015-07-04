@@ -68,12 +68,6 @@ bool StockTransactions::sell(Stocks symbol, MMTransactions& mm, int shares, int 
 		set_price(symbol.get_currentPrice() * shares);
 		set_shares(get_sharesOwned() - shares);
 		mm.deposit(get_price());
-		m_gains = get_price() - get_price();
-		set_symbol(symbol.get_symbol());
-		if (get_gains() > 0)
-		{
-			mm.deposit(get_gains());
-		}
 		m_transactionType = transactionType::SALE;
 		return true;
 	}
