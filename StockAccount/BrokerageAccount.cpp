@@ -129,6 +129,4 @@ void brokerageAccount::portfolioMenu(MMTransactions& acc1, StockMarket& dow, Por
 			break;
 		}
 	} while (user_input != 0 && acc1.get_balance() > 1);
-	
-	
 }
