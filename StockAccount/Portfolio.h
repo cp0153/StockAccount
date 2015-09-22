@@ -26,8 +26,8 @@ private:
 	std::map <std::string, int> m_holdings;
 	double m_totalGainLoss;
 	double m_currentValue;
+  int m_key;
 	double m_originalValue;
-	int m_key;
 	void incrementKey();
 	void updateOriginalValue(StockTransactions newTrade);
 };
