@@ -4,7 +4,7 @@ Students: Chris Pearce, Jimmy Stein
 Name of application: Brokerage account
 
 Task: To make a simulation of a brokerage account with a money market account and portfolio that the user can buy and sell
-stocks out of an acccount.
+stocks out of an account.
 
 Objects: Brokerage Account is the class that creates all the other classes and runs the main menu, Stock market, money market
 and money market transactions all have an aggregation relationship with brokerage account. Money market transactions are
